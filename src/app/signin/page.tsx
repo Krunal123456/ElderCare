@@ -7,8 +7,8 @@ export default function SignIn() {
       {/* Header Spacer */}
       <div className="h-20" />
       {/* Centered Card */}
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-md border border-gray-100 px-8 py-10 flex flex-col items-center">
+  <div className="flex-1 flex flex-col items-center justify-center">
+  <div className="w-full max-w-md card border border-gray-100 px-8 py-10 flex flex-col items-center">
           <div className="bg-blue-50 rounded-full p-3 mb-5">
             <svg
               width="32"
@@ -77,7 +77,7 @@ export default function SignIn() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md flex items-center justify-center gap-2 text-base"
+              className="w-full btn-primary flex items-center justify-center gap-2 text-base"
             >
               <svg
                 width="18"
@@ -157,8 +157,8 @@ export default function SignIn() {
           </div>
         </div>
         {/* Security Notice */}
-        <div className="mt-6 w-full max-w-md mx-auto">
-          <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3 flex items-center gap-2 text-blue-700 text-sm">
+          <div className="mt-6 w-full max-w-md mx-auto">
+          <div className="card-soft border border-blue-100 px-4 py-3 flex items-center gap-2 text-blue-700 text-sm">
             <svg
               width="18"
               height="18"

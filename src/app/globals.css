@@ -19,11 +19,11 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
   font-size: 1.05rem;
-  line-height: 1.7;
+  line-height: 1.65;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,17 +31,17 @@ body {
 
 h1,
 .h1 {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
 }
 h2,
 .h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  line-height: 1.2;
+  line-height: 1.18;
 }
 h3,
 .h3 {
@@ -64,5 +64,96 @@ select,
 textarea {
   font-family: inherit;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
+}
+
+/* SaaS-like buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.6rem 1.25rem;
+  box-shadow: 0 6px 20px rgba(37,99,235,0.12);
+  transition: background-color .15s ease, transform .12s ease;
+}
+.btn-primary:hover { background-color: #1e40af; transform: translateY(-1px); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid rgba(229,231,235,1);
+  color: #1f2937;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.04);
+  transition: background-color .12s ease, transform .12s ease;
+}
+.btn-ghost:hover { background-color: #f8fafc; transform: translateY(-1px); }
+
+/* Header tweaks */
+.site-header {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(15,23,42,0.04);
+}
+.nav-link {
+  color: #374151;
+  padding: 0.35rem 0.25rem;
+  transition: color .15s ease, transform .15s ease;
+}
+.nav-link:hover { color: #0f172a; transform: translateY(-1px); }
+.nav-cta { box-shadow: 0 8px 24px rgba(59,130,246,0.12); }
+
+/* Design tokens and small utility classes for SaaS consistency */
+:root {
+  --radius-full: 9999px;
+  --radius-lg: 12px;
+  --card-bg: #ffffff;
+  --muted: #6b7280; /* gray-500 */
+  --card-shadow: 0 8px 30px rgba(15,23,42,0.06);
+  --soft-shadow: 0 6px 18px rgba(15,23,42,0.04);
+  --container-max: 1200px;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+.card-soft {
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: var(--soft-shadow);
+  border: 1px solid rgba(15,23,42,0.03);
+}
+
+.lead {
+  color: var(--muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.muted { color: var(--muted); }
+
+.section-hero { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* small responsive helpers */
+@media (min-width: 768px) {
+  .container { padding-left: 1.5rem; padding-right: 1.5rem; }
 }

@@ -157,7 +157,7 @@ export default function Pricing() {
           Choose the plan that fits your family’s care needs. No hidden fees, no
           surprises. Professional care services with flexible pricing options.
         </p>
-        <div className="flex items-center justify-center gap-4 mb-8">
+  <div className="flex items-center justify-center gap-4 mb-8">
           <button
             className={`font-medium px-2 transition-colors ${
               billing === "monthly" ? "text-blue-700" : "text-gray-500"
@@ -196,11 +196,11 @@ export default function Pricing() {
         <p className="text-gray-500 mb-8 text-sm">
           Platform access and support features. Care hours billed separately.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative border border-gray-200 rounded-xl bg-white shadow-sm p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:shadow-lg hover:border-blue-400 cursor-pointer ${
+              className={`card relative p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:border-blue-400 cursor-pointer ${
                 plan.highlight ? "ring-2 ring-blue-500" : ""
               }`}
             >

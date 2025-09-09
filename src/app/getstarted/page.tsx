@@ -10,7 +10,7 @@ export default function GetStarted() {
     <div className="min-h-screen flex flex-col bg-[#fafbfc]">
       <div className="h-20" />
       <div className="flex-1 flex flex-col items-center justify-center">
-        <div className="w-full max-w-xl bg-white rounded-2xl shadow-md border border-gray-100 px-8 py-10 flex flex-col items-center">
+  <div className="w-full max-w-xl card border border-gray-100 px-8 py-10 flex flex-col items-center">
           <div className="bg-blue-50 rounded-full p-3 mb-5">
             <svg
               width="32"
@@ -221,7 +221,7 @@ export default function GetStarted() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md flex items-center justify-center gap-2 text-base mt-2"
+              className="w-full btn-primary flex items-center justify-center gap-2 text-base mt-2"
             >
               <svg
                 width="18"
@@ -294,8 +294,8 @@ export default function GetStarted() {
           </div>
         </div>
         {/* Info Boxes */}
-        <div className="mt-8 w-full max-w-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3 flex flex-col items-center text-blue-700 text-sm">
+          <div className="mt-8 w-full max-w-xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="card-soft border border-blue-100 px-4 py-3 flex flex-col items-center text-blue-700 text-sm">
             <svg
               width="18"
               height="18"

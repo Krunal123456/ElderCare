@@ -5,39 +5,39 @@ import { useState } from "react";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white/55 backdrop-blur-lg border-b border-white/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="h-14 flex items-center justify-between">
+  <header className="w-full fixed top-0 left-0 z-50 site-header">
+      <div className="container">
+          <div className="h-16 flex items-center justify-between">
           {/* left: logo */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
                 EC
               </div>
-              <span className="font-semibold text-lg tracking-tight text-gray-900">
+              <span className="font-semibold text-xl tracking-tight text-gray-900">
                 ElderCare
               </span>
             </Link>
           </div>
 
           {/* center nav (desktop) */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm text-gray-700">
-            <Link href="/" className="hover:text-gray-900">
+          <nav className="hidden lg:flex items-center gap-6 text-sm">
+            <Link href="/" className="nav-link">
               Home
             </Link>
-            <Link href="/services" className="hover:text-gray-900">
+            <Link href="/services" className="nav-link">
               Services
             </Link>
-            <Link href="/caregivers" className="hover:text-gray-900">
+            <Link href="/caregivers" className="nav-link">
               Caregivers
             </Link>
-            <Link href="/about" className="hover:text-gray-900">
+            <Link href="/about" className="nav-link">
               About
             </Link>
-            <Link href="/pricing" className="hover:text-gray-900">
+            <Link href="/pricing" className="nav-link">
               Pricing
             </Link>
-            <Link href="/contact" className="hover:text-gray-900">
+            <Link href="/contact" className="nav-link">
               Contact
             </Link>
           </nav>
@@ -53,17 +53,11 @@ export default function Header() {
               </button>
             </div>
 
-            <Link
-              href="/signin"
-              className="hidden sm:inline text-sm text-gray-700 hover:underline"
-            >
+            <Link href="/signin" className="hidden sm:inline btn-ghost">
               Sign In
             </Link>
 
-            <Link
-              href="/getstarted"
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-full shadow-sm"
-            >
+            <Link href="/getstarted" className="btn-primary nav-cta">
               Get Started
             </Link>
 
@@ -156,20 +150,20 @@ export default function Header() {
                 Contact
               </Link>
               <div className="flex gap-2 mt-2">
-                <Link
-                  href="/signin"
-                  className="flex-1 text-center text-gray-700 py-2 border rounded hover:bg-gray-50"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/getstarted"
-                  className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Get Started
-                </Link>
+                    <Link
+                      href="/signin"
+                      className="flex-1 text-center btn-ghost py-2"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      href="/getstarted"
+                      className="flex-1 text-center btn-primary py-2"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      Get Started
+                    </Link>
               </div>
             </div>
           </nav>

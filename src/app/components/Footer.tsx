@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-50 border-t mt-8">
-      <div className="max-w-6xl mx-auto px-6 py-10 text-sm text-gray-700">
+      <div className="container py-10 text-sm text-gray-700">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div>
             <div className="flex items-center gap-3">
@@ -52,27 +52,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 border-t pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-gray-500">
-            © {new Date().getFullYear()} ElderCare. All rights reserved.
-          </div>
+          <div className="text-xs text-gray-500">© {new Date().getFullYear()} ElderCare. All rights reserved.</div>
           <div className="flex items-center gap-4 text-xs text-gray-500">
-            <div className="px-2 py-1 bg-green-50 text-green-700 rounded">
-              HIPAA Compliant
-            </div>
-            <div className="px-2 py-1 bg-blue-50 text-blue-700 rounded">
-              Secure Payments
-            </div>
-            <div className="px-2 py-1 bg-gray-100 text-gray-700 rounded">
-              24/7 Support
-            </div>
+            <div className="px-2 py-1 bg-green-50 text-green-700 rounded">HIPAA Compliant</div>
+            <div className="px-2 py-1 bg-blue-50 text-blue-700 rounded">Secure Payments</div>
+            <div className="px-2 py-1 bg-gray-100 text-gray-700 rounded">24/7 Support</div>
           </div>
         </div>
       </div>
 
       <div className="w-full bg-white/90 border-t mt-4">
-        <div className="max-w-6xl mx-auto px-6 py-3 text-sm text-red-600 flex items-center justify-center">
-          Emergency Support: +91-911-ELDERCARE — Available 24/7 for urgent care
-          situations
+        <div className="container py-3 text-sm text-red-600 flex items-center justify-center">
+          Emergency Support: +91-911-ELDERCARE — Available 24/7 for urgent care situations
         </div>
       </div>
     </footer>

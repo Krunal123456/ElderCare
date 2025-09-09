@@ -41,7 +41,7 @@ export default function Caregivers() {
     <div className="bg-[#f9fafc] min-h-screen">
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-r from-blue-50 to-green-50 pt-25 pb-10 px-2 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
           Find Trusted Caregivers
         </h1>
         <p className="max-w-2xl mx-auto text-gray-700 mb-8 text-lg">
@@ -77,10 +77,7 @@ export default function Caregivers() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {caregivers.map((c, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl shadow p-5 flex flex-col"
-            >
+            <div key={idx} className="card p-5 flex flex-col">
               <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
                 <Image
                   src={c.image}
@@ -142,12 +139,9 @@ export default function Caregivers() {
                   {c.rating} ({c.reviews} reviews)
                 </span>
               </div>
-              <Link
-                href="#"
-                className="mt-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center justify-center gap-2"
-              >
-                View Profile
-              </Link>
+                  <Link href="#" className="btn-primary mt-auto">
+                    View Profile
+                  </Link>
             </div>
           ))}
         </div>

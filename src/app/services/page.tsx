@@ -7,7 +7,7 @@ export default function Services() {
     <div className="bg-[#f9fafc] min-h-screen">
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-r from-blue-50 to-green-50 pt-25 pb-14 px-2 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
           Our Care Services
         </h1>
         <p className="max-w-2xl mx-auto text-gray-700 mb-8 text-lg">
@@ -16,16 +16,10 @@ export default function Services() {
           compassionate care that gives families peace of mind.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-          <Link
-            href="#"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow"
-          >
+          <Link href="#" className="btn-primary">
             Find a Caregiver
           </Link>
-          <Link
-            href="#"
-            className="border-2 border-blue-600 text-blue-700 px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-50"
-          >
+          <Link href="#" className="btn-ghost">
             Consult Expert
           </Link>
         </div>
@@ -53,7 +47,7 @@ export default function Services() {
       {/* Service Cards */}
       <section className="max-w-6xl mx-auto py-10 px-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Medical Support */}
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col">
+  <div className="card p-6 flex flex-col">
           <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
             <Image
               src="/services.png"
@@ -100,7 +94,7 @@ export default function Services() {
         </div>
 
         {/* Daily Assistance */}
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col">
+  <div className="card p-6 flex flex-col">
           <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
             <Image
               src="/services.png"
@@ -147,7 +141,7 @@ export default function Services() {
         </div>
 
         {/* Companionship */}
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col">
+  <div className="card p-6 flex flex-col">
           <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
             <Image
               src="/services.png"
@@ -194,7 +188,7 @@ export default function Services() {
         </div>
 
         {/* Specialized Care */}
-        <div className="bg-white rounded-2xl shadow p-6 flex flex-col">
+  <div className="card p-6 flex flex-col">
           <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
             <Image
               src="/services.png"

@@ -8,10 +8,7 @@ export default function CTA({
   href?: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="inline-block bg-blue-600 text-white px-5 py-3 rounded-md shadow hover:bg-blue-700"
-    >
+    <Link href={href} className="btn-primary inline-block">
       {label}
     </Link>
   );

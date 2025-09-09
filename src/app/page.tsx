@@ -6,52 +6,129 @@ export default function Home() {
   return (
     <div className="bg-white pt-8 relative">
       {/* Hero Section with background image */}
-      <div
-        style={{
-          backgroundImage: 'url("/screenshots/Gemin1.png")',
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <section className="relative w-full min-h-[480px] flex flex-col justify-center items-center text-left bg-transparent pb-12">
-          {/* Hero background image */}
-          <div className="absolute inset-0 w-full h-full -z-10">
-            <Image
-              src="/home-caregiver-assisting-a-senior-woman-to-get-clothed-in-a-nursing-home.webp"
-              alt="ElderCare Professional Hero"
-              fill
-              className="object-cover object-center w-full h-full"
-              priority
-            />
-            <div className="absolute inset-0 bg-white/60" />
+      <section className="relative w-full min-h-[600px] flex flex-col justify-center items-center text-center bg-gradient-to-br from-blue-100 via-white to-blue-200 pb-12 overflow-hidden">
+        {/* Hero background blurred image with overlay */}
+        <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none">
+          <Image
+            src="/screenshots/Gemin1.png"
+            alt="ElderCare Hero Background"
+            fill
+            className="object-cover object-center w-full h-full opacity-80"
+            priority
+            style={{ zIndex: 0 }}
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-blue-100 via-white/80 to-blue-200/80"
+            style={{ zIndex: 1 }}
+          />
+        </div>
+        <div className="max-w-5xl w-full px-6 pt-20 pb-10 flex flex-col items-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-green-600 text-white text-base font-semibold px-5 py-1.5 rounded-full mb-8 shadow">
+            <span role="img" aria-label="trophy">
+              🏆
+            </span>
+            Trusted by 10,000+ families across India
           </div>
-          <div className="max-w-3xl w-full px-6 pt-24 pb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-              Trusted Elderly Care for a Safer Tomorrow
-            </h1>
-            <p className="text-lg md:text-xl text-white mb-8 max-w-2xl">
-              One of India&apos;s most trusted eldercare provider in your town.
-              Better care, Better Living
-            </p>
-            <div className="flex gap-4">
-              <Link
-                href="/caregivers"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow"
+          {/* Heading */}
+          <h1
+            className="text-[3.6rem] md:text-[6.6rem] font-extrabold text-gray-800 leading-[0.98] mb-6 tracking-tight"
+            style={{
+              fontFamily: `'Montserrat', 'Nunito', 'Segoe UI', 'Arial', sans-serif'`,
+              letterSpacing: "-0.035em",
+            }}
+          >
+            Caring for Your <span className="text-blue-700">Loved Ones</span>,
+            <br />
+            Anytime, Anywhere
+          </h1>
+          {/* Subheading */}
+          <p
+            className="text-lg md:text-2xl text-gray-700 mb-10 max-w-3xl font-medium"
+            style={{
+              fontFamily: `'Montserrat', 'Nunito', 'Segoe UI', 'Arial', sans-serif'`,
+              fontSize: "1.45rem",
+              lineHeight: "1.45",
+            }}
+          >
+            Find trusted caregivers for elderly support — medical care, daily
+            assistance, companionship, and specialized services. Your
+            family&apos;s peace of mind is our priority.
+          </p>
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center w-full">
+            <Link
+              href="/caregivers"
+              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-bold text-lg shadow w-full sm:w-auto text-center transition"
+            >
+              Find a Caregiver
+            </Link>
+            <Link
+              href="/getstarted"
+              className="bg-white border border-gray-300 hover:bg-gray-100 text-gray-900 px-8 py-3 rounded-lg font-bold text-lg shadow w-full sm:w-auto text-center transition flex items-center justify-center gap-2"
+            >
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
               >
-                Find a Caregiver
-              </Link>
-              <Link
-                href="/getstarted"
-                className="bg-white/80 hover:bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold text-lg border border-blue-600 shadow"
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+              Sign Up as Family
+            </Link>
+          </div>
+          {/* Features */}
+          <div className="flex flex-wrap justify-center gap-8 mt-4">
+            <div className="flex items-center gap-2 text-base text-gray-700">
+              <svg
+                className="text-green-500"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
               >
-                Sign Up as Family
-              </Link>
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+              Background Verified
+            </div>
+            <div className="flex items-center gap-2 text-base text-gray-700">
+              <svg
+                className="text-green-500"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4l3 3" />
+              </svg>
+              24/7 Support
+            </div>
+            <div className="flex items-center gap-2 text-base text-gray-700">
+              <svg
+                className="text-green-500"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 3v4M8 3v4M2 11h20" />
+              </svg>
+              Secure Platform
             </div>
           </div>
-          {/* End of hero section with background image */}
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* Why Choose Section */}
       <section className="max-w-6xl mx-auto px-4 py-16">

@@ -170,10 +170,7 @@ export default function Contact() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {supportOptions.map((opt) => (
-              <div
-                key={opt.title}
-                className="border border-gray-200 rounded-xl bg-white p-6 flex flex-col items-center text-center shadow-sm"
-              >
+              <div key={opt.title} className="card p-6 flex flex-col items-center text-center">
                 {opt.icon}
                 <div className="font-semibold mt-3 mb-1">{opt.title}</div>
                 <div className="text-gray-700 text-sm">{opt.desc}</div>
@@ -188,7 +185,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-4 pt-12 pb-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Contact Form */}
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm text-left">
+            <div className="card p-6 text-left">
               <div className="font-bold text-lg mb-4">Send us a Message</div>
               <form className="space-y-3">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -256,10 +253,7 @@ export default function Contact() {
                     0/500 characters
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md mt-2"
-                >
+                <button type="submit" className="w-full btn-primary mt-2">
                   Send Message
                 </button>
               </form>

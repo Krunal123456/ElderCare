@@ -35,7 +35,7 @@ export default function About() {
           className="relative z-20 text-center w-full px-4 flex flex-col items-center justify-center"
           style={{ minHeight: "400px" }}
         >
-          <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow mb-3 mt-8">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow mb-3 mt-8">
             About ElderCare
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-white drop-shadow">
@@ -48,7 +48,7 @@ export default function About() {
 
       {/* Mission */}
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h2 className="text-2xl font-bold mb-3">Our Mission</h2>
             <p className="text-gray-700 mb-4">
@@ -62,7 +62,7 @@ export default function About() {
               journey.
             </p>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-lg relative w-full h-64">
+          <div className="card-soft overflow-hidden relative w-full h-64 rounded-lg">
             <Image
               src="/about.png"
               alt="Our Mission"
@@ -85,8 +85,8 @@ export default function About() {
           </p>
         </div>
 
-        <div className="mt-6 flex justify-center">
-          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-8 max-w-3xl text-center shadow-md">
+          <div className="mt-6 flex justify-center">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-8 max-w-3xl text-center card-soft">
             <div className="text-gray-800 mb-4">
               “When my grandmother needed care, we spent weeks searching for a
               reliable caregiver. The process was frustrating and filled with
@@ -110,7 +110,7 @@ export default function About() {
             The principles that guide everything we do at ElderCare.
           </p>
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow flex gap-4 items-start">
+            <div className="card p-6 flex gap-4 items-start">
               <IconCircle>❤</IconCircle>
               <div>
                 <div className="font-semibold">Compassion First</div>
@@ -119,7 +119,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow flex gap-4 items-start">
+            <div className="card p-6 flex gap-4 items-start">
               <IconCircle>🔒</IconCircle>
               <div>
                 <div className="font-semibold">Trust & Safety</div>
@@ -129,7 +129,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow flex gap-4 items-start">
+            <div className="card p-6 flex gap-4 items-start">
               <IconCircle>👪</IconCircle>
               <div>
                 <div className="font-semibold">Family-Centered Care</div>
@@ -138,7 +138,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow flex gap-4 items-start">
+            <div className="card p-6 flex gap-4 items-start">
               <IconCircle>⭐</IconCircle>
               <div>
                 <div className="font-semibold">Excellence</div>
@@ -201,7 +201,7 @@ export default function About() {
                     idx % 2 !== 0 ? "opacity-0 pointer-events-none" : ""
                   }`}
                 >
-                  <div className="bg-white rounded-lg shadow p-5 min-w-[320px] max-w-[380px] border border-blue-100 transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl">
+                  <div className="card p-5 min-w-[320px] max-w-[380px] border border-blue-100 transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-blue-600 font-bold text-base md:text-lg">
                         {item.year}
@@ -228,7 +228,7 @@ export default function About() {
                     idx % 2 === 0 ? "opacity-0 pointer-events-none" : ""
                   }`}
                 >
-                  <div className="bg-white rounded-lg shadow p-5 min-w-[320px] max-w-[380px] border border-blue-100 transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl">
+                  <div className="card p-5 min-w-[320px] max-w-[380px] border border-blue-100 transition-all duration-200 group-hover:scale-105 group-hover:shadow-xl">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-blue-600 font-bold text-base md:text-lg">
                         {item.year}
@@ -244,7 +244,7 @@ export default function About() {
                 </div>
                 {/* Mobile: All cards full width below dot */}
                 <div className="md:hidden w-full mt-2">
-                  <div className="bg-white rounded-lg shadow p-5 border border-blue-100">
+                  <div className="card p-5 border border-blue-100">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-blue-600 font-bold text-base">
                         {item.year}
@@ -431,10 +431,7 @@ export default function About() {
             join us in creating a better future for elderly care in India.
           </p>
           <div className="flex justify-center gap-4">
-            <a
-              className="inline-block bg-white/10 text-white px-5 py-3 rounded-md"
-              href="/contact"
-            >
+            <a className="btn-primary" href="/contact">
               Contact Us
             </a>
           </div>
