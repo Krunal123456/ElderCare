@@ -13,10 +13,10 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
-                EC
+                S
               </div>
               <span className="font-semibold text-xl tracking-tight text-gray-900">
-                ElderCare
+                Sathilo
               </span>
             </Link>
           </div>

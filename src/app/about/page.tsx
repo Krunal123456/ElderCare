@@ -11,10 +11,7 @@ function IconCircle({ children }: { children: React.ReactNode }) {
 
 export default function About() {
   return (
-    <PageShell
-      title="About ElderCare"
-      description="Who we are and why we exist"
-    >
+    <PageShell title="About Sathilo" description="Who we are and why we exist">
       <div className="space-y-12">
         {/* Mission */}
         <section className="max-w-6xl mx-auto px-6 py-12">
@@ -49,9 +46,9 @@ export default function About() {
           <div className="text-center max-w-3xl mx-auto">
             <h3 className="text-xl font-semibold mb-3">Our Story</h3>
             <p className="text-gray-600 mb-6">
-              ElderCare was born from a personal experience of struggling to
-              find reliable, professional care for aging parents — and a desire
-              to build a better way.
+              Sathilo was born from a personal experience of struggling to find
+              reliable, professional care for aging parents — and a desire to
+              build a better way.
             </p>
           </div>
 
@@ -61,7 +58,7 @@ export default function About() {
                 “When my grandmother needed care, we spent weeks searching for a
                 reliable caregiver. The process was frustrating and filled with
                 uncertainty. That’s when we realized there had to be a better
-                way. ElderCare was created to solve this problem for millions of
+                way. Sathilo was created to solve this problem for millions of
                 families.”
               </div>
               <div className="mt-4">
@@ -77,7 +74,7 @@ export default function About() {
           <div className="max-w-6xl mx-auto px-6">
             <h3 className="text-2xl font-bold mb-6 text-center">Our Values</h3>
             <p className="text-center text-gray-600 mb-8">
-              The principles that guide everything we do at ElderCare.
+              The principles that guide everything we do at Sathilo.
             </p>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="card p-6 flex gap-4 items-start">
@@ -140,7 +137,7 @@ export default function About() {
               {[
                 {
                   year: 2020,
-                  title: "Founded ElderCare",
+                  title: "Founded Sathilo",
                   text: "Started with a vision to revolutionize elder care services in India.",
                 },
                 {

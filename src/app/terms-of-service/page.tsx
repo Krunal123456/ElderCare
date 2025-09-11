@@ -4,7 +4,7 @@ export default function TermsOfService() {
   return (
     <PageShell
       title="Terms of Service"
-      description="The rules and legal terms governing use of ElderCare."
+      description="The rules and legal terms governing use of Sathilo."
     >
       <section className="mb-6">
         <h2 className="font-semibold mb-2">Use of Service</h2>
@@ -26,7 +26,7 @@ export default function TermsOfService() {
       <section className="mb-6">
         <h2 className="font-semibold mb-2">Liability</h2>
         <p className="text-sm text-gray-600">
-          ElderCare acts as a facilitator matching families with caregivers.
+          Sathilo acts as a facilitator matching families with caregivers.
           Except where prohibited by law, our liability is limited as described
           in these terms.
         </p>
@@ -43,7 +43,7 @@ export default function TermsOfService() {
       <section className="mb-6">
         <h2 className="font-semibold mb-2">Contact</h2>
         <p className="text-sm text-gray-600">
-          For questions about these Terms, email: legal@eldercare.in
+          For questions about these Terms, email: legal@sathilo.com
         </p>
       </section>
     </PageShell>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.sathilo.com/sitemap.xml
+
+# Crawl-delay can be set if your server needs it (value in seconds)
+# Crawl-delay: 10

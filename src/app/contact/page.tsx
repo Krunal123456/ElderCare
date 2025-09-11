@@ -22,7 +22,7 @@ export default function Contact() {
       title: "24/7 Support Hotline",
       desc: (
         <>
-          <span className="font-semibold">+91-911-ELDERCARE</span>
+          <span className="font-semibold">+91-911-971-SATH</span>
           <br />
           <span className="text-xs">(+91-911-353-372-273)</span>
         </>
@@ -48,7 +48,7 @@ export default function Contact() {
       title: "Email Support",
       desc: (
         <>
-          <span className="font-semibold">support@eldercare.in</span>
+          <span className="font-semibold">support@sathilo.com</span>
           <br />
           <span className="text-xs">Response within 4 hours</span>
         </>
@@ -111,28 +111,28 @@ export default function Contact() {
       city: "Mumbai (Headquarters)",
       address: "15th Floor, Nariman Point, Mumbai - 400021",
       phone: "+91-22-6789-0123",
-      email: "mumbai@eldercare.in",
+      email: "mumbai@sathilo.com",
       hours: "Mon-Sun: 24/7",
     },
     {
       city: "Delhi NCR",
       address: "Sector 44, Gurgaon - 122003",
       phone: "+91-124-456-7890",
-      email: "delhi@eldercare.in",
+      email: "delhi@sathilo.com",
       hours: "Mon-Sun: 24/7",
     },
     {
       city: "Bangalore",
       address: "Koramangala, Bangalore - 560034",
       phone: "+91-80-1234-5678",
-      email: "bangalore@eldercare.in",
+      email: "bangalore@sathilo.com",
       hours: "Mon-Sun: 24/7",
     },
     {
       city: "Pune",
       address: "Baner, Pune - 411045",
       phone: "+91-20-9876-5432",
-      email: "pune@eldercare.in",
+      email: "pune@sathilo.com",
       hours: "Mon-Sun: 24/7",
     },
   ];
@@ -265,7 +265,7 @@ export default function Contact() {
             <div className="flex flex-col gap-6">
               <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
                 <iframe
-                  title="ElderCare Mumbai HQ"
+                  title="Sathilo Mumbai HQ"
                   src="https://www.google.com/maps?q=Nariman+Point,+Mumbai&output=embed"
                   width="100%"
                   height="220"

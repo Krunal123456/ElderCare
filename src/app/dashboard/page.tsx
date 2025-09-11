@@ -8,7 +8,7 @@ export default function Dashboard() {
       {/* Why Choose Section */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-10">
-          Why Choose ElderCare?
+          &quot;As a registered nurse, Sathilo provides me with a steady
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="card p-6 flex flex-col items-center text-center">
@@ -252,7 +252,7 @@ export default function Dashboard() {
                 <span className="text-yellow-400 text-xl">★★★★★</span>
               </div>
               <p className="text-gray-700 mb-4">
-                “ElderCare helped us find the perfect caregiver quickly. The
+                “Sathilo helped us find the perfect caregiver quickly. The
                 platform is so easy to use and the caregivers are truly
                 professional and caring.”
               </p>
@@ -277,9 +277,9 @@ export default function Dashboard() {
                 <span className="text-yellow-400 text-xl">★★★★★</span>
               </div>
               <p className="text-gray-700 mb-4">
-                “As a registered nurse, ElderCare provides me with a steady
+                &quot;As a registered nurse, Sathilo provides me with a steady
                 stream of clients matched with my expertise. The platform
-                handles everything seamlessly!”
+                handles everything seamlessly!&quot;
               </p>
               <div className="font-semibold text-gray-900">
                 Dr. Rajesh Gupta
@@ -323,7 +323,7 @@ export default function Dashboard() {
             Ready to Care for Your Loved Ones?
           </h2>
           <p className="text-white/90 mb-8">
-            Join thousands of families who trust ElderCare for professional,
+            Join thousands of families who trust Sathilo for professional,
             compassionate care. Get started today and give your loved ones the
             care they deserve.
           </p>
@@ -350,10 +350,10 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
-                EC
+                S
               </div>
               <span className="font-semibold text-lg tracking-tight text-gray-900">
-                ElderCare
+                Sathilo
               </span>
             </div>
             <p className="text-gray-600 text-sm mb-4">
@@ -467,13 +467,13 @@ export default function Dashboard() {
             <span>24/7 Support</span>
           </div>
           <div className="flex gap-4 items-center">
-            <span>© 2025 ElderCare. All rights reserved.</span>
+            <span>© 2025 Sathilo. All rights reserved.</span>
           </div>
         </div>
         <div className="w-full bg-red-50 text-red-700 text-center py-2 mt-4 text-xs font-semibold">
           Emergency Support:{" "}
-          <a href="tel:091-971-ELDERCARE" className="underline">
-            091-971-ELDERCARE
+          <a href="tel:+91911971SATH" className="underline">
+            +91-911-971-SATH
           </a>
         </div>
       </footer>

@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
       <section className="mb-6">
         <h2 className="font-semibold mb-2">Contact Us</h2>
         <p className="text-sm text-gray-600">
-          For privacy questions, email: privacy@eldercare.in
+          For privacy questions, email: privacy@sathilo.com
         </p>
       </section>
     </PageShell>

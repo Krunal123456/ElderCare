@@ -197,7 +197,7 @@ export default function BookServicePage({
     // simulate payment delay
     setTimeout(async () => {
       const timestamp = Date.now();
-      const bookingKey = `eldercare_booking_${serviceSlug}_${timestamp}`;
+      const bookingKey = `sathilo_booking_${serviceSlug}_${timestamp}`;
       const { days, totalHours, amount } = computeDaysAndHours();
 
       type Booking = {

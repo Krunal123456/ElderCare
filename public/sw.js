@@ -1,4 +1,4 @@
-const CACHE_NAME = "eldercare-v1";
+const CACHE_NAME = "sathilo-v1";
 const ASSETS = [
   "/",
   "/index.html",

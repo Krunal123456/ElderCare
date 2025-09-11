@@ -290,7 +290,7 @@ export default function Pricing() {
           <div className="bg-gradient-to-r from-blue-500 to-green-400 rounded-xl py-10 px-6 text-white text-center mb-8">
             <h3 className="text-2xl font-bold mb-2">Ready to Get Started?</h3>
             <p className="mb-4">
-              Join thousands of families who trust ElderCare for professional,
+              Join thousands of families who trust Sathilo for professional,
               compassionate care. Start with our Basic plan and upgrade anytime.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

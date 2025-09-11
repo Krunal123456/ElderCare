@@ -8,11 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div>
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center">
-                EC
+              <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold">
+                S
               </div>
               <div>
-                <div className="font-bold">ElderCare</div>
+                <div className="font-bold">Sathilo</div>
                 <div className="text-xs text-gray-500 mt-1">
                   Professional elder care services
                 </div>
@@ -116,7 +116,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-gray-500">
-            © {new Date().getFullYear()} ElderCare. All rights reserved.
+            © {new Date().getFullYear()} Sathilo. All rights reserved.
           </div>
           <div className="flex items-center gap-4 text-xs text-gray-500">
             <div className="px-2 py-1 bg-green-50 text-green-700 rounded">
@@ -137,7 +137,7 @@ export default function Footer() {
 
       <div className="w-full bg-white/90 border-t mt-4">
         <div className="container py-3 text-sm text-red-600 flex items-center justify-center">
-          Emergency Support: +91-911-ELDERCARE — Available 24/7 for urgent care
+          Emergency Support: +91-911-971-SATH — Available 24/7 for urgent care
           situations
         </div>
       </div>

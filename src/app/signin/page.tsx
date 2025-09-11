@@ -30,7 +30,7 @@ export default function SignIn() {
           </div>
           <h1 className="text-2xl font-bold mb-1 text-center">Welcome Back</h1>
           <div className="text-gray-500 text-sm mb-7 text-center">
-            Sign in to access your ElderCare account
+            Sign in to access your Sathilo account
           </div>
           <form className="w-full space-y-4">
             <div>

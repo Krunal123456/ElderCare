@@ -24,10 +24,10 @@ export default function Home() {
             <div className="max-w-3xl w-full text-center z-20">
               <div className="inline-block bg-black/1 rounded-xl py-6 px-8">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 text-white drop-shadow-lg">
-                  Trusted Elderly Care for a Safer Tomorrow
+                  Trusted Elderly Care by Sathilo — For a Safer Tomorrow
                 </h1>
                 <p className="text-sm md:text-base text-white/90 mb-6 max-w-2xl mx-auto">
-                  One of India&apos;s most trusted eldercare providers in your
+                  One of India&apos;s most trusted Elder Care providers in your
                   town. Better care, better living.
                 </p>
                 <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center w-full mt-4">
@@ -55,7 +55,7 @@ export default function Home() {
       {/* Why Choose Section */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-10">
-          Why Choose ElderCare?
+          Why Choose Sathilo?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="card p-6 flex flex-col items-center text-center">
@@ -262,7 +262,7 @@ export default function Home() {
                 <span className="text-yellow-400 text-xl">★★★★★</span>
               </div>
               <p className="text-gray-700 mb-4">
-                “ElderCare helped us find the perfect caregiver quickly. The
+                “Sathilo helped us find the perfect caregiver quickly. The
                 platform is so easy to use and the caregivers are truly
                 professional and caring.”
               </p>
@@ -287,9 +287,9 @@ export default function Home() {
                 <span className="text-yellow-400 text-xl">★★★★★</span>
               </div>
               <p className="text-gray-700 mb-4">
-                “As a registered nurse, ElderCare provides me with a steady
-                stream of clients matched with my expertise. The platform
-                handles everything seamlessly!”
+                “As a registered nurse, Sathilo provides me with a steady stream
+                of clients matched with my expertise. The platform handles
+                everything seamlessly!”
               </p>
               <div className="font-semibold text-gray-900">
                 Dr. Rajesh Gupta
@@ -306,7 +306,7 @@ export default function Home() {
           Affordable Care Plans
         </h2>
         <p className="text-center text-gray-600 mb-6">
-          Professional elder care starting from just ₹9999/month. Choose from
+          Professional Sathilo care starting from just 9999/month. Choose from
           flexible plans designed to meet your family’s specific needs and
           budget.
         </p>
@@ -333,7 +333,7 @@ export default function Home() {
             Ready to Care for Your Loved Ones?
           </h2>
           <p className="text-white/90 mb-8">
-            Join thousands of families who trust ElderCare for professional,
+            Join thousands of families who trust Sathilo for professional,
             compassionate care. Get started today and give your loved ones the
             care they deserve.
           </p>

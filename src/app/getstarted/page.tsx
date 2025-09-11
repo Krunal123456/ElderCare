@@ -73,7 +73,7 @@ export default function GetStarted() {
 
   return (
     <PageShell
-      title="Join ElderCare"
+      title="Join Sathilo"
       description="Create your account to get started with professional elderly care"
     >
       <div className="min-h-screen flex flex-col bg-[#fafbfc]">
@@ -95,7 +95,7 @@ export default function GetStarted() {
               </svg>
             </div>
             <h1 className="text-2xl font-bold mb-1 text-center">
-              Join ElderCare
+              Join Sathilo
             </h1>
             <div className="text-gray-500 text-sm mb-7 text-center">
               Create your account to get started with professional elderly care
