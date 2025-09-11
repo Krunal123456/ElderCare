@@ -1,11 +1,36 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
-import { initFirebase, signInWithGoogle } from "../../lib/firebaseClient";
+import {
+  initFirebase,
+  signInWithGoogleAuto,
+  getRedirectSignInResult,
+} from "../../lib/firebaseClient";
 
 export default function SignIn() {
   useEffect(() => {
     initFirebase();
+    // handle redirect result (mobile SSO flow)
+    (async function () {
+      const user = await getRedirectSignInResult();
+      if (user) {
+        try {
+          await fetch("/api/saveUser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              uid: user.uid,
+              email: user.email,
+              name: user.displayName,
+              photoURL: user.photoURL,
+            }),
+          });
+          window.location.href = "/";
+        } catch (err) {
+          console.error("Failed to save user after redirect sign-in", err);
+        }
+      }
+    })();
   }, []);
   return (
     <div className="min-h-screen flex flex-col bg-[#fafbfc]">
@@ -108,26 +133,13 @@ export default function SignIn() {
             <button
               onClick={async () => {
                 try {
-                  const res = await signInWithGoogle();
-                  const user = res.user;
-                  // send to server to save
-                  await fetch("/api/saveUser", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      uid: user.uid,
-                      email: user.email,
-                      name: user.displayName,
-                      photoURL: user.photoURL,
-                    }),
-                  });
-                  // redirect after sign-in to homepage
-                  window.location.href = "/";
+                  // auto chooses redirect on mobile, popup on desktop
+                  await signInWithGoogleAuto();
                 } catch (err) {
                   console.error(err);
                 }
               }}
-              className="flex-1 border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50"
+              className="w-full border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50"
             >
               <svg width="20" height="20" viewBox="0 0 48 48">
                 <g>
@@ -151,18 +163,6 @@ export default function SignIn() {
                 </g>
               </svg>
               Google
-            </button>
-            <button className="flex-1 border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50">
-              <svg width="20" height="20" viewBox="0 0 48 48">
-                <g>
-                  <circle fill="#1877F2" cx="24" cy="24" r="20" />
-                  <path
-                    fill="#fff"
-                    d="M26.7 34v-8.2h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.5v-3c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.2h-2.6v3.2h2.6V34h3.1z"
-                  />
-                </g>
-              </svg>
-              Facebook
             </button>
           </div>
           <div className="text-sm text-gray-500 mt-6 w-full text-center">
