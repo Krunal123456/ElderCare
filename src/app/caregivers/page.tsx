@@ -1,45 +1,32 @@
-import React from "react";
+"use client";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const caregivers = [
-  {
-    name: "Nurse Priya Sharma",
-    location: "Mumbai, Maharashtra",
-    experience: 8,
-    specialties: ["medical", "daily", "specialized"],
-    languages: ["Hindi", "English", "Marathi"],
-    price: 250,
-    dayPrice: 2000,
-    rating: 4.9,
-    reviews: 127,
-    bookings: 340,
-    status: "Available",
-    image: "/services.png",
-    tags: ["8 years exp.", "medical", "daily", "specialized"],
-  },
-  {
-    name: "Caregiver Rajesh Kumar",
-    location: "Delhi NCR",
-    experience: 5,
-    specialties: ["companionship", "daily"],
-    languages: ["English", "Punjabi"],
-    price: 180,
-    dayPrice: 1440,
-    rating: 4.8,
-    reviews: 88,
-    bookings: 215,
-    status: "Available",
-    image: "/services.png",
-    tags: ["5 years exp.", "companionship", "daily"],
-  },
-  // ...add more caregivers as needed for demo
-];
+import CAREGIVERS from "../../../public/caregivers";
 
 export default function Caregivers() {
+  const [query, setQuery] = useState("");
+  const [specialty, setSpecialty] = useState("");
+
+  const specialties = useMemo(() => {
+    const s = new Set<string>();
+    CAREGIVERS.forEach((c) => c.specialties.forEach((sp: string) => s.add(sp)));
+    return Array.from(s);
+  }, []);
+
+  const filtered = useMemo(() => {
+    return CAREGIVERS.filter((c) => {
+      const matchesQuery =
+        query === "" ||
+        c.name.toLowerCase().includes(query.toLowerCase()) ||
+        c.specialties.join(" ").toLowerCase().includes(query.toLowerCase());
+      const matchesSpec = specialty === "" || c.specialties.includes(specialty);
+      return matchesQuery && matchesSpec;
+    });
+  }, [query, specialty]);
+
   return (
     <div className="bg-[#f9fafc] min-h-screen">
-      {/* Hero Section */}
       <section className="w-full bg-gradient-to-r from-blue-50 to-green-50 pt-25 pb-10 px-2 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
           Find Trusted Caregivers
@@ -51,33 +38,38 @@ export default function Caregivers() {
         </p>
       </section>
 
-      {/* Search & Filters */}
       <section className="max-w-6xl mx-auto px-2 flex flex-col md:flex-row gap-4 pt-15 items-center justify-between mb-6">
         <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Search caregivers by name or specialty..."
           className="w-full md:w-1/2 px-4 py-3 rounded-lg border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
-        <select className="px-4 py-3 rounded-lg border border-gray-200 shadow-sm">
-          <option>All Specialties</option>
-        </select>
-        <select className="px-4 py-3 rounded-lg border border-gray-200 shadow-sm">
-          <option>All Locations</option>
-        </select>
-        <select className="px-4 py-3 rounded-lg border border-gray-200 shadow-sm">
-          <option>All Prices</option>
+        <select
+          value={specialty}
+          onChange={(e) => setSpecialty(e.target.value)}
+          className="px-4 py-3 rounded-lg border border-gray-200 shadow-sm"
+        >
+          <option value="">All Specialties</option>
+          {specialties.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
         </select>
       </section>
 
-      {/* Caregivers List */}
       <section className="max-w-6xl mx-auto px-2">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold">12 Caregivers Available</h2>
+          <h2 className="text-lg font-semibold">
+            {filtered.length} Caregivers Available
+          </h2>
           <span className="text-sm text-gray-500">Sort by: Ratings</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {caregivers.map((c, idx) => (
-            <div key={idx} className="card p-5 flex flex-col">
+          {filtered.map((c) => (
+            <div key={c.id} className="card p-5 flex flex-col">
               <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden">
                 <Image
                   src={c.image}
@@ -100,13 +92,13 @@ export default function Caregivers() {
               </div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-blue-700 font-semibold text-sm">
-                  {c.tags[0]}
+                  {c.tags?.[0]}
                 </span>
               </div>
               <h3 className="font-bold text-base mb-1">{c.name}</h3>
               <div className="text-gray-600 text-sm mb-1">{c.location}</div>
               <div className="flex flex-wrap gap-2 mb-2">
-                {c.specialties.map((s, i) => (
+                {c.specialties.map((s: string, i: number) => (
                   <span
                     key={i}
                     className="bg-gray-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
@@ -116,7 +108,7 @@ export default function Caregivers() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-2 mb-2">
-                {c.languages.map((l, i) => (
+                {c.languages.map((l: string, i: number) => (
                   <span
                     key={i}
                     className="bg-gray-50 text-gray-500 px-2 py-1 rounded-full text-xs"
@@ -139,15 +131,14 @@ export default function Caregivers() {
                   {c.rating} ({c.reviews} reviews)
                 </span>
               </div>
-                  <Link href="#" className="btn-primary mt-auto">
-                    View Profile
-                  </Link>
+              <Link href={`/book/${c.id}`} className="btn-primary mt-auto">
+                Book Now
+              </Link>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="max-w-6xl mx-auto px-2 py-12">
         <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 text-center">
           <h2 className="text-xl md:text-2xl font-bold mb-2">

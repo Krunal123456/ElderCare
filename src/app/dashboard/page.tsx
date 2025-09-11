@@ -5,33 +5,12 @@ import Link from "next/link";
 export default function Dashboard() {
   return (
     <div className="bg-white">
-      {/* Hero Section */}
-      <section className="w-full min-h-[320px] flex flex-col justify-center items-center text-left bg-gradient-to-r from-blue-500 to-green-400 ">
-        <div className="max-w-4xl w-full px-6 pt-24 pb-12 text-center mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-black leading-tight mb-4">
-            Trusted Elderly Care for a Safer Tomorrow
-          </h1>
-          <p className="text-lg md:text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
-            One of India&apos;s most trusted eldercare provider in your town.
-            Better care, Better Living
-          </p>
-          <div className="flex gap-4 justify-center">
-            <Link href="/caregivers" className="btn-primary text-lg">
-              Find a Caregiver
-            </Link>
-            <Link href="/getstarted" className="btn-ghost text-lg">
-              Sign Up as Family
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Why Choose Section */}
       <section className="max-w-6xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-10">
           Why Choose ElderCare?
         </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="card p-6 flex flex-col items-center text-center">
             <div className="bg-blue-100 text-blue-600 rounded-full p-3 mb-4">
               <svg
@@ -184,7 +163,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center">
             <Image
-              src="/services.png"
+              src="/1.jpg"
               alt="Medical Support"
               width={80}
               height={80}
@@ -201,7 +180,7 @@ export default function Dashboard() {
           </div>
           <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center">
             <Image
-              src="/services.png"
+              src="/2.jpg"
               alt="Daily Assistance"
               width={80}
               height={80}
@@ -218,7 +197,7 @@ export default function Dashboard() {
           </div>
           <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center">
             <Image
-              src="/services.png"
+              src="/3.jpg"
               alt="Companionship"
               width={80}
               height={80}
@@ -235,7 +214,7 @@ export default function Dashboard() {
           </div>
           <div className="bg-white rounded-xl shadow p-6 flex flex-col items-center text-center">
             <Image
-              src="/services.png"
+              src="/4.jpg"
               alt="Specialized Care"
               width={80}
               height={80}

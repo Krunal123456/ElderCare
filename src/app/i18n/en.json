@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "caregivers": "Caregivers",
+    "about": "About",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "signin": "Sign In",
+    "getstarted": "Get Started",
+    "language": "Language"
+  }
+}

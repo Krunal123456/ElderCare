@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "होम",
+    "services": "सेवाएँ",
+    "caregivers": "देखभालकर्ता",
+    "about": "हमारे बारे में",
+    "pricing": "मूल्य निर्धारण",
+    "contact": "संपर्क",
+    "signin": "साइन इन",
+    "getstarted": "शुरू करें",
+    "language": "भाषा"
+  }
+}

@@ -2,6 +2,7 @@
 import CTA from "../components/CTA";
 import Link from "next/link";
 import { useState } from "react";
+import PageShell from "../components/PageShell";
 
 const plans = [
   {
@@ -148,165 +149,165 @@ const faqs = [
 export default function Pricing() {
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-white pb-12">
-      <div className="max-w-5xl mx-auto px-4 pt-20 pb-10 text-center">
-        <h1 className="text-4xl font-bold mb-2">
-          Transparent Pricing for Quality Care
-        </h1>
-        <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-          Choose the plan that fits your family’s care needs. No hidden fees, no
-          surprises. Professional care services with flexible pricing options.
-        </p>
-  <div className="flex items-center justify-center gap-4 mb-8">
-          <button
-            className={`font-medium px-2 transition-colors ${
-              billing === "monthly" ? "text-blue-700" : "text-gray-500"
-            }`}
-            onClick={() => setBilling("monthly")}
-            aria-pressed={billing === "monthly"}
-          >
-            Monthly
-          </button>
-          <button
-            className="inline-block w-10 h-6 bg-gray-200 rounded-full relative focus:outline-none"
-            onClick={() =>
-              setBilling(billing === "monthly" ? "yearly" : "monthly")
-            }
-            aria-label="Toggle billing period"
-          >
-            <span
-              className={`absolute top-1 left-1 w-4 h-4 rounded-full transition-all duration-200 ${
-                billing === "monthly"
-                  ? "bg-blue-600 translate-x-0"
-                  : "bg-green-500 translate-x-4"
+    <PageShell
+      title="Pricing"
+      description="Flexible plans for hourly, daily, and subscription-based care."
+    >
+      <div className="bg-gradient-to-b from-blue-50 to-white pb-12">
+        <div className="max-w-5xl mx-auto px-4 pt-10 pb-10 text-center">
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <button
+              className={`font-medium px-2 transition-colors ${
+                billing === "monthly" ? "text-blue-700" : "text-gray-500"
               }`}
-            ></span>
-          </button>
-          <button
-            className={`px-2 transition-colors ${
-              billing === "yearly" ? "text-blue-700" : "text-gray-400"
-            }`}
-            onClick={() => setBilling("yearly")}
-            aria-pressed={billing === "yearly"}
-          >
-            Yearly
-          </button>
-        </div>
-        <h2 className="text-2xl font-semibold mb-2">Subscription Plans</h2>
-        <p className="text-gray-500 mb-8 text-sm">
-          Platform access and support features. Care hours billed separately.
-        </p>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className={`card relative p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:border-blue-400 cursor-pointer ${
-                plan.highlight ? "ring-2 ring-blue-500" : ""
+              onClick={() => setBilling("monthly")}
+              aria-pressed={billing === "monthly"}
+            >
+              Monthly
+            </button>
+            <button
+              className="inline-block w-10 h-6 bg-gray-200 rounded-full relative focus:outline-none"
+              onClick={() =>
+                setBilling(billing === "monthly" ? "yearly" : "monthly")
+              }
+              aria-label="Toggle billing period"
+            >
+              <span
+                className={`absolute top-1 left-1 w-4 h-4 rounded-full transition-all duration-200 ${
+                  billing === "monthly"
+                    ? "bg-blue-600 translate-x-0"
+                    : "bg-green-500 translate-x-4"
+                }`}
+              ></span>
+            </button>
+            <button
+              className={`px-2 transition-colors ${
+                billing === "yearly" ? "text-blue-700" : "text-gray-400"
               }`}
+              onClick={() => setBilling("yearly")}
+              aria-pressed={billing === "yearly"}
             >
-              {plan.tag && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow">
-                  {plan.tag}
-                </span>
-              )}
-              <div className="font-bold text-lg mb-1">{plan.name}</div>
-              <div className="flex items-end gap-2 mb-2">
-                <span className="text-3xl font-extrabold">
-                  ₹{plan.price[billing]}
-                </span>
-                <span className="text-gray-400 line-through text-base">
-                  ₹{plan.oldPrice[billing]}
-                </span>
-                <span className="text-gray-500 text-xs">/{billing}</span>
-              </div>
-              <ul className="text-left text-sm text-gray-700 mb-6 space-y-2">
-                {plan.features.map((f, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-green-500 mt-1">✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <CTA label={plan.cta} />
-            </div>
-          ))}
-        </div>
-
-        <h2 className="text-2xl font-semibold mb-2">Caregiver Service Rates</h2>
-        <p className="text-gray-500 mb-8 text-sm">
-          Transparent hourly and daily rates for different types of care
-          services.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          {serviceRates.map((rate) => (
-            <div
-              key={rate.name}
-              className="border border-gray-200 rounded-xl bg-white shadow-sm p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:shadow-lg hover:border-blue-400 cursor-pointer"
-            >
-              <div className="font-bold text-lg mb-1">{rate.name}</div>
-              <div className="flex items-end gap-2 mb-2">
-                <span className="text-xl font-extrabold">₹{rate.price}</span>
-                <span className="text-gray-500 text-xs">/hour</span>
-              </div>
-              <div className="text-gray-400 text-xs mb-2">
-                ₹{rate.day}/day (8 hrs)
-              </div>
-              <ul className="text-left text-sm text-gray-700 mb-4 space-y-2">
-                {rate.features.map((f, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-green-500 mt-1">✓</span>
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-blue-50 rounded-xl p-8 mb-12">
-          <div className="font-semibold text-lg mb-2">Need Custom Care?</div>
-          <div className="text-gray-600 mb-4">
-            We offer customized care packages for unique needs. Get a
-            personalized quote from our care specialists.
+              Yearly
+            </button>
           </div>
-          <CTA label="Get Custom Quote" href="/getstarted" />
-        </div>
-
-        <h2 className="text-2xl font-semibold mb-4">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-6 mb-16">
-          {faqs.map((faq) => (
-            <div
-              key={faq.q}
-              className="bg-white border border-gray-200 rounded-xl p-6 text-left shadow-sm text-base transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-blue-400 cursor-pointer"
-            >
-              <div className="font-semibold mb-1">{faq.q}</div>
-              <div className="text-gray-600 text-sm">{faq.a}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-gradient-to-r from-blue-500 to-green-400 rounded-xl py-10 px-6 text-white text-center mb-8">
-          <h3 className="text-2xl font-bold mb-2">Ready to Get Started?</h3>
-          <p className="mb-4">
-            Join thousands of families who trust ElderCare for professional,
-            compassionate care. Start with our Basic plan and upgrade anytime.
+          <h2 className="text-2xl font-semibold mb-2">Subscription Plans</h2>
+          <p className="text-gray-500 mb-8 text-sm">
+            Platform access and support features. Care hours billed separately.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <CTA label="Start Free Trial" />
-            <Link
-              href="/contact"
-              className="inline-block border border-white px-5 py-3 rounded-md hover:bg-white hover:text-blue-600 transition font-medium"
-            >
-              Talk to Expert
-            </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {plans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`card relative p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:border-blue-400 cursor-pointer ${
+                  plan.highlight ? "ring-2 ring-blue-500" : ""
+                }`}
+              >
+                {plan.tag && (
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-semibold shadow">
+                    {plan.tag}
+                  </span>
+                )}
+                <div className="font-bold text-lg mb-1">{plan.name}</div>
+                <div className="flex items-end gap-2 mb-2">
+                  <span className="text-3xl font-extrabold">
+                    ₹{plan.price[billing]}
+                  </span>
+                  <span className="text-gray-400 line-through text-base">
+                    ₹{plan.oldPrice[billing]}
+                  </span>
+                  <span className="text-gray-500 text-xs">/{billing}</span>
+                </div>
+                <ul className="text-left text-sm text-gray-700 mb-6 space-y-2">
+                  {plan.features.map((f, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CTA label={plan.cta} />
+              </div>
+            ))}
           </div>
-          <div className="text-xs mt-4 opacity-80">
-            14-day free trial • No setup fees • Cancel anytime
+
+          <h2 className="text-2xl font-semibold mb-2">
+            Caregiver Service Rates
+          </h2>
+          <p className="text-gray-500 mb-8 text-sm">
+            Transparent hourly and daily rates for different types of care
+            services.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            {serviceRates.map((rate) => (
+              <div
+                key={rate.name}
+                className="border border-gray-200 rounded-xl bg-white shadow-sm p-6 flex flex-col items-center transition-all duration-200 hover:scale-[1.03] hover:shadow-lg hover:border-blue-400 cursor-pointer"
+              >
+                <div className="font-bold text-lg mb-1">{rate.name}</div>
+                <div className="flex items-end gap-2 mb-2">
+                  <span className="text-xl font-extrabold">₹{rate.price}</span>
+                  <span className="text-gray-500 text-xs">/hour</span>
+                </div>
+                <div className="text-gray-400 text-xs mb-2">
+                  ₹{rate.day}/day (8 hrs)
+                </div>
+                <ul className="text-left text-sm text-gray-700 mb-4 space-y-2">
+                  {rate.features.map((f, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-green-500 mt-1">✓</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-blue-50 rounded-xl p-8 mb-12">
+            <div className="font-semibold text-lg mb-2">Need Custom Care?</div>
+            <div className="text-gray-600 mb-4">
+              We offer customized care packages for unique needs. Get a
+              personalized quote from our care specialists.
+            </div>
+            <CTA label="Get Custom Quote" href="/getstarted" />
+          </div>
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6 mb-16">
+            {faqs.map((faq) => (
+              <div
+                key={faq.q}
+                className="bg-white border border-gray-200 rounded-xl p-6 text-left shadow-sm text-base transition-all duration-200 hover:scale-[1.02] hover:shadow-lg hover:border-blue-400 cursor-pointer"
+              >
+                <div className="font-semibold mb-1">{faq.q}</div>
+                <div className="text-gray-600 text-sm">{faq.a}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-500 to-green-400 rounded-xl py-10 px-6 text-white text-center mb-8">
+            <h3 className="text-2xl font-bold mb-2">Ready to Get Started?</h3>
+            <p className="mb-4">
+              Join thousands of families who trust ElderCare for professional,
+              compassionate care. Start with our Basic plan and upgrade anytime.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <CTA label="Start Free Trial" />
+              <Link
+                href="/contact"
+                className="inline-block border border-white px-5 py-3 rounded-md hover:bg-white hover:text-blue-600 transition font-medium"
+              >
+                Talk to Expert
+              </Link>
+            </div>
+            <div className="text-xs mt-4 opacity-80">
+              14-day free trial • No setup fees • Cancel anytime
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </PageShell>
   );
 }

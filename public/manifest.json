@@ -1,0 +1,22 @@
+{
+  "name": "ElderCare",
+  "short_name": "ElderCare",
+  "description": "Professional elder care services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/file.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/in-home-care_hero.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

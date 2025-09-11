@@ -170,7 +170,10 @@ export default function Contact() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {supportOptions.map((opt) => (
-              <div key={opt.title} className="card p-6 flex flex-col items-center text-center">
+              <div
+                key={opt.title}
+                className="card p-6 flex flex-col items-center text-center"
+              >
                 {opt.icon}
                 <div className="font-semibold mt-3 mb-1">{opt.title}</div>
                 <div className="text-gray-700 text-sm">{opt.desc}</div>

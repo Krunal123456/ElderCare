@@ -1,14 +1,19 @@
 "use client";
 import Link from "next/link";
+import { useEffect } from "react";
+import { initFirebase, signInWithGoogle } from "../../lib/firebaseClient";
 
 export default function SignIn() {
+  useEffect(() => {
+    initFirebase();
+  }, []);
   return (
     <div className="min-h-screen flex flex-col bg-[#fafbfc]">
       {/* Header Spacer */}
       <div className="h-20" />
       {/* Centered Card */}
-  <div className="flex-1 flex flex-col items-center justify-center">
-  <div className="w-full max-w-md card border border-gray-100 px-8 py-10 flex flex-col items-center">
+      <div className="flex-1 flex flex-col items-center justify-center">
+        <div className="w-full max-w-md card border border-gray-100 px-8 py-10 flex flex-col items-center">
           <div className="bg-blue-50 rounded-full p-3 mb-5">
             <svg
               width="32"
@@ -100,7 +105,30 @@ export default function SignIn() {
             <div className="flex-1 h-px bg-gray-200" />
           </div>
           <div className="flex gap-3 w-full">
-            <button className="flex-1 border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50">
+            <button
+              onClick={async () => {
+                try {
+                  const res = await signInWithGoogle();
+                  const user = res.user;
+                  // send to server to save
+                  await fetch("/api/saveUser", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      uid: user.uid,
+                      email: user.email,
+                      name: user.displayName,
+                      photoURL: user.photoURL,
+                    }),
+                  });
+                  // redirect after sign-in to homepage
+                  window.location.href = "/";
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+              className="flex-1 border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50"
+            >
               <svg width="20" height="20" viewBox="0 0 48 48">
                 <g>
                   <circle fill="#fff" cx="24" cy="24" r="20" />
@@ -157,7 +185,7 @@ export default function SignIn() {
           </div>
         </div>
         {/* Security Notice */}
-          <div className="mt-6 w-full max-w-md mx-auto">
+        <div className="mt-6 w-full max-w-md mx-auto">
           <div className="card-soft border border-blue-100 px-4 py-3 flex items-center gap-2 text-blue-700 text-sm">
             <svg
               width="18"

@@ -4,10 +4,11 @@ import { useState } from "react";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Multilingual support removed
   return (
-  <header className="w-full fixed top-0 left-0 z-50 site-header">
+    <header className="w-full fixed top-0 left-0 z-50 site-header">
       <div className="container">
-          <div className="h-16 flex items-center justify-between">
+        <div className="h-16 flex items-center justify-between">
           {/* left: logo */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
@@ -44,33 +45,29 @@ export default function Header() {
 
           {/* right controls */}
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center">
-              <button
-                aria-label="Language"
-                className="text-xs px-2 py-1 rounded border border-gray-200 bg-white/70 text-gray-600"
-              >
-                EN
-              </button>
-            </div>
-
-            <Link href="/signin" className="hidden sm:inline btn-ghost">
+            <Link
+              href="/signin"
+              className="hidden md:inline-flex btn-ghost items-center"
+            >
               Sign In
             </Link>
-
-            <Link href="/getstarted" className="btn-primary nav-cta">
+            <Link
+              href="/getstarted"
+              className="hidden md:inline-flex btn-primary nav-cta items-center"
+            >
               Get Started
             </Link>
 
-            {/* mobile menu button */}
+            {/* mobile menu button (single) */}
             <button
-              className="ml-2 inline-flex items-center justify-center lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+              className="ml-2 inline-flex items-center justify-center lg:hidden p-1 rounded-md text-gray-700 hover:bg-gray-100"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((v) => !v)}
             >
               {mobileOpen ? (
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   aria-hidden
@@ -85,8 +82,8 @@ export default function Header() {
                 </svg>
               ) : (
                 <svg
-                  width="20"
-                  height="20"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   aria-hidden
@@ -149,22 +146,7 @@ export default function Header() {
               >
                 Contact
               </Link>
-              <div className="flex gap-2 mt-2">
-                    <Link
-                      href="/signin"
-                      className="flex-1 text-center btn-ghost py-2"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      Sign In
-                    </Link>
-                    <Link
-                      href="/getstarted"
-                      className="flex-1 text-center btn-primary py-2"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      Get Started
-                    </Link>
-              </div>
+              {/* Sign In / Get Started intentionally omitted from mobile menu to avoid header overflow; CTAs are desktop-only */}
             </div>
           </nav>
         )}
