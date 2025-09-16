@@ -20,6 +20,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/30" />
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.0)_0%,rgba(0,0,0,0.35)_60%)]" />
 
+
+
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <div className="max-w-3xl w-full text-center z-20">
               <div className="inline-block bg-black/1 rounded-xl py-6 px-8">

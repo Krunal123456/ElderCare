@@ -1,13 +1,20 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   initFirebase,
   signInWithGoogleAuto,
   getRedirectSignInResult,
 } from "../../lib/firebaseClient";
+import { signInWithEmail } from "../../lib/signInWithEmail";
 
 export default function SignIn() {
+  // State for form
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     initFirebase();
     // handle redirect result (mobile SSO flow)
@@ -15,19 +22,29 @@ export default function SignIn() {
       const user = await getRedirectSignInResult();
       if (user) {
         try {
-          await fetch("/api/saveUser", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              uid: user.uid,
-              email: user.email,
-              name: user.displayName,
-              photoURL: user.photoURL,
-            }),
-          });
-          window.location.href = "/";
+          // Fetch user profile from Firestore to determine role
+          const { db } = await import("@/lib/firebaseClient");
+          const { doc, getDoc } = await import("firebase/firestore");
+          let role = "family";
+          // Try caregivers collection first
+          const cgDoc = await getDoc(doc(db(), "caregivers", user.uid));
+          if (cgDoc.exists()) {
+            role = "caregiver";
+          } else {
+            // Fallback to users collection
+            const famDoc = await getDoc(doc(db(), "users", user.uid));
+            if (famDoc.exists()) {
+              role = "family";
+            }
+          }
+          // Route to appropriate dashboard
+          if (role === "caregiver") {
+            window.location.href = "/dashboard/caregiver";
+          } else {
+            window.location.href = "/dashboard/family";
+          }
         } catch (err) {
-          console.error("Failed to save user after redirect sign-in", err);
+          setError("Failed to route after sign-in");
         }
       }
     })();
@@ -57,7 +74,40 @@ export default function SignIn() {
           <div className="text-gray-500 text-sm mb-7 text-center">
             Sign in to access your Sathilo account
           </div>
-          <form className="w-full space-y-4">
+          <form
+            className="w-full space-y-4"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setError(null);
+              setLoading(true);
+              try {
+                const res = await signInWithEmail(email, password);
+                // Check user role and redirect
+                const user = res.user;
+                const { db } = await import("@/lib/firebaseClient");
+                const { doc, getDoc } = await import("firebase/firestore");
+                let role = "family";
+                const cgDoc = await getDoc(doc(db(), "caregivers", user.uid));
+                if (cgDoc.exists()) {
+                  role = "caregiver";
+                } else {
+                  const famDoc = await getDoc(doc(db(), "users", user.uid));
+                  if (famDoc.exists()) {
+                    role = "family";
+                  }
+                }
+                if (role === "caregiver") {
+                  window.location.href = "/dashboard/caregiver";
+                } else {
+                  window.location.href = "/dashboard/family";
+                }
+              } catch (err: any) {
+                setError(err?.message || "Sign in failed");
+              } finally {
+                setLoading(false);
+              }
+            }}
+          >
             <div>
               <label className="block text-sm font-medium mb-1">
                 Email Address
@@ -67,6 +117,9 @@ export default function SignIn() {
                 className="border border-gray-200 rounded px-3 py-2 w-full"
                 placeholder="your.email@example.com"
                 autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -77,6 +130,9 @@ export default function SignIn() {
                   className="border border-gray-200 rounded px-3 py-2 w-full pr-10"
                   placeholder="Enter your password"
                   autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer">
                   <svg
@@ -99,7 +155,7 @@ export default function SignIn() {
                 <span>Remember me</span>
               </label>
               <Link
-                href="#"
+                href="/forgot-password"
                 className="text-blue-600 hover:underline font-medium"
               >
                 Forgot password?
@@ -107,22 +163,49 @@ export default function SignIn() {
             </div>
             <button
               type="submit"
-              className="w-full btn-primary flex items-center justify-center gap-2 text-base"
+              className="w-full btn-primary flex items-center justify-center gap-2 text-base disabled:opacity-60"
+              disabled={loading}
             >
-              <svg
-                width="18"
-                height="18"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 8v4" />
-                <circle cx="12" cy="16" r="1" />
-              </svg>
+              {loading ? (
+                <svg
+                  className="animate-spin mr-2"
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                  />
+                  <path
+                    className="opacity-75"
+                    d="M4 12a8 8 0 018-8"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="18"
+                  height="18"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4" />
+                  <circle cx="12" cy="16" r="1" />
+                </svg>
+              )}
               Sign In
             </button>
+            {error && (
+              <div className="text-red-600 text-sm text-center mt-2">{error}</div>
+            )}
           </form>
           <div className="flex items-center my-5 w-full">
             <div className="flex-1 h-px bg-gray-200" />
@@ -168,7 +251,7 @@ export default function SignIn() {
           <div className="text-sm text-gray-500 mt-6 w-full text-center">
             Don&apos;t have an account?{" "}
             <Link
-              href="#"
+              href="/getstarted"
               className="text-blue-600 hover:underline font-medium"
             >
               Sign up here
@@ -177,7 +260,7 @@ export default function SignIn() {
           <div className="text-xs text-gray-400 mt-2 w-full text-center">
             Are you a caregiver?{" "}
             <Link
-              href="#"
+              href="/caregiver/signup"
               className="text-blue-600 hover:underline font-medium"
             >
               Sign in as Caregiver

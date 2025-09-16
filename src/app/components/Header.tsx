@@ -45,19 +45,21 @@ export default function Header() {
 
           {/* right controls */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/signin"
-              className="hidden md:inline-flex btn-ghost items-center"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/getstarted"
-              className="hidden md:inline-flex btn-primary nav-cta items-center"
-            >
-              Get Started
-            </Link>
-
+            {/* Desktop: Sign In and Get Started buttons */}
+            <div className="hidden lg:flex items-center gap-2">
+              <Link
+                href="/signin"
+                className="px-4 py-2 rounded-lg font-semibold text-blue-700 border border-blue-100 bg-white hover:bg-blue-50 transition"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/getstarted"
+                className="px-4 py-2 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 transition"
+              >
+                Get Started
+              </Link>
+            </div>
             {/* mobile menu button (single) */}
             <button
               className="ml-2 inline-flex items-center justify-center lg:hidden p-1 rounded-md text-gray-700 hover:bg-gray-100"
@@ -146,7 +148,21 @@ export default function Header() {
               >
                 Contact
               </Link>
-              {/* Sign In / Get Started intentionally omitted from mobile menu to avoid header overflow; CTAs are desktop-only */}
+              <hr className="my-2" />
+              <Link
+                href="/signin"
+                className="py-2 font-semibold text-blue-600"
+                onClick={() => setMobileOpen(false)}
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/getstarted"
+                className="py-2 font-semibold text-green-600"
+                onClick={() => setMobileOpen(false)}
+              >
+                Get Started
+              </Link>
             </div>
           </nav>
         )}
