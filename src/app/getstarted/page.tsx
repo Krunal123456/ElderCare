@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import PageShell from "../components/PageShell";
-import CaregiverMultiStep from "../caregiver/signup/multistep/page";
+
 import { signInWithGoogleAuto, initFirebase } from "../../lib/firebaseClient";
 import { useEffect, useState } from "react";
 import type { User } from "firebase/auth";
@@ -294,9 +294,7 @@ export default function GetStarted() {
     );
   }
   const [role, setRole] = useState<string>("");
-  const [googleUser, setGoogleUser] = useState<Record<string, unknown> | null>(
-    null
-  );
+  const [googleUser, setGoogleUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
 
   // On mount, check if user is already signed in
@@ -319,7 +317,7 @@ export default function GetStarted() {
       // signInWithPopup returns a userCredential object
       const user = userCred?.user || userCred;
       if (!user) throw new Error("No user returned from Google sign-in");
-      setGoogleUser(user);
+  setGoogleUser(user);
     } catch (error) {
       console.error("Google sign-in error:", error);
       let msg = "Google sign-in failed";
@@ -457,7 +455,7 @@ export default function GetStarted() {
               {/* Conditional rendering for forms */}
               {role === "caregiver" && (
                 <div className="w-full">
-                  <CaregiverMultiStep googleUser={googleUser} />
+
                 </div>
               )}
               {role === "family" && <FamilyForm googleUser={googleUser} />}

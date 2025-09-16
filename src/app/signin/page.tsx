@@ -43,7 +43,7 @@ export default function SignIn() {
           } else {
             window.location.href = "/dashboard/family";
           }
-        } catch (err) {
+        } catch {
           setError("Failed to route after sign-in");
         }
       }
@@ -81,28 +81,14 @@ export default function SignIn() {
               setError(null);
               setLoading(true);
               try {
-                const res = await signInWithEmail(email, password);
-                // Check user role and redirect
-                const user = res.user;
-                const { db } = await import("@/lib/firebaseClient");
-                const { doc, getDoc } = await import("firebase/firestore");
-                let role = "family";
-                const cgDoc = await getDoc(doc(db(), "caregivers", user.uid));
-                if (cgDoc.exists()) {
-                  role = "caregiver";
+                await signInWithEmail(email, password);
+                window.location.href = "/profile";
+              } catch (err) {
+                if (err instanceof Error) {
+                  setError(err.message);
                 } else {
-                  const famDoc = await getDoc(doc(db(), "users", user.uid));
-                  if (famDoc.exists()) {
-                    role = "family";
-                  }
+                  setError("Sign in failed");
                 }
-                if (role === "caregiver") {
-                  window.location.href = "/dashboard/caregiver";
-                } else {
-                  window.location.href = "/dashboard/family";
-                }
-              } catch (err: any) {
-                setError(err?.message || "Sign in failed");
               } finally {
                 setLoading(false);
               }
@@ -176,16 +162,8 @@ export default function SignIn() {
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                  />
-                  <path
-                    className="opacity-75"
-                    d="M4 12a8 8 0 018-8"
-                  />
+                  <circle className="opacity-25" cx="12" cy="12" r="10" />
+                  <path className="opacity-75" d="M4 12a8 8 0 018-8" />
                 </svg>
               ) : (
                 <svg
@@ -204,7 +182,9 @@ export default function SignIn() {
               Sign In
             </button>
             {error && (
-              <div className="text-red-600 text-sm text-center mt-2">{error}</div>
+              <div className="text-red-600 text-sm text-center mt-2">
+                {error}
+              </div>
             )}
           </form>
           <div className="flex items-center my-5 w-full">
@@ -218,8 +198,8 @@ export default function SignIn() {
                 try {
                   // auto chooses redirect on mobile, popup on desktop
                   await signInWithGoogleAuto();
-                } catch (err) {
-                  console.error(err);
+                } catch {
+                  // Silently ignore
                 }
               }}
               className="w-full border border-gray-200 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-50"
