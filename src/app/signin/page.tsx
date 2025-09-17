@@ -81,8 +81,47 @@ export default function SignIn() {
               setError(null);
               setLoading(true);
               try {
-                await signInWithEmail(email, password);
-                window.location.href = "/profile";
+                const userCredential = await signInWithEmail(email, password);
+                const user = userCredential.user;
+                // Check if user exists in Firestore (users or caregivers)
+                const { db } = await import("@/lib/firebaseClient");
+                const { doc, getDoc } = await import("firebase/firestore");
+                let found = false;
+                let role = "family";
+                let userData = null;
+                // Check caregivers collection
+                const cgDoc = await getDoc(doc(db(), "caregivers", user.uid));
+                if (cgDoc.exists()) {
+                  found = true;
+                  role = "caregiver";
+                  userData = cgDoc.data();
+                } else {
+                  // Check users collection
+                  const famDoc = await getDoc(doc(db(), "users", user.uid));
+                  if (famDoc.exists()) {
+                    found = true;
+                    role = "family";
+                    userData = famDoc.data();
+                  }
+                }
+                if (found) {
+                  // Store user data in localStorage for dashboard
+                  if (userData) {
+                    localStorage.setItem(
+                      "userDashboardData",
+                      JSON.stringify(userData)
+                    );
+                  }
+                  // Redirect to dashboard based on role
+                  if (role === "caregiver") {
+                    window.location.href = "/dashboard/caregiver";
+                  } else {
+                    window.location.href = "/dashboard/user";
+                  }
+                } else {
+                  // Redirect to signup form
+                  window.location.href = "/getstarted";
+                }
               } catch (err) {
                 if (err instanceof Error) {
                   setError(err.message);

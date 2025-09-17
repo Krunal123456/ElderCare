@@ -6,6 +6,7 @@ import {
   signInWithRedirect,
   getRedirectResult,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 import type { DocumentData } from "firebase/firestore";
@@ -16,14 +17,14 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 
-// Using provided project config (boardme-2ceb2)
+// Using provided project config (elder-care-90320)
 const firebaseConfig = {
-  apiKey: "AIzaSyCdrc9oeyBYQo4i7LQLFt9vLkS0rfNYA5o",
-  authDomain: "boardme-2ceb2.firebaseapp.com",
-  projectId: "boardme-2ceb2",
-  storageBucket: "boardme-2ceb2.appspot.com",
-  messagingSenderId: "880977423986",
-  appId: "1:880977423986:web:b75c615e44361b88c21ceb",
+  apiKey: "AIzaSyBNQI1mYq7yGbGPiM_HdKi-bKLV2biTFzU",
+  authDomain: "elder-care-90320.firebaseapp.com",
+  projectId: "elder-care-90320",
+  storageBucket: "elder-care-90320.firebasestorage.app",
+  messagingSenderId: "324968830002",
+  appId: "1:324968830002:web:2b6f50bea98909cb20582b",
 };
 
 export function initFirebase() {
@@ -141,6 +142,17 @@ export async function getRedirectSignInResult() {
 export async function registerWithEmail(email: string, password: string) {
   const a = auth();
   return createUserWithEmailAndPassword(a, email, password);
+}
+
+// Ensure a user is signed in. Some environments may not have currentUser populated
+// immediately after registration; this helper will sign-in with email/password
+// if needed and return the signed-in user.
+export async function ensureSignedIn(email: string, password: string) {
+  const a = auth();
+  if (a.currentUser) return a.currentUser;
+  // Fallback: attempt sign-in with credentials
+  const cred = await signInWithEmailAndPassword(a, email, password);
+  return cred.user;
 }
 
 export async function saveBooking(

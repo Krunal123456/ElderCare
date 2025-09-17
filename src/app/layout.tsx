@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import RegisterSW from "./components/RegisterSW";
 import InstallPrompt from "./components/InstallPrompt";
 import { LanguageProvider } from "./i18n/LanguageProvider";
+// Chakra UI was temporarily removed due to runtime/type issues. Re-add after resolving version/type mismatches.
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -136,6 +137,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <WhatsAppButton />
+          {/* ChakraProvider removed */}
         </LanguageProvider>
       </body>
     </html>
